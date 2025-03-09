@@ -9,4 +9,5 @@ spec:
   ports:
   - port: 4000
     targetPort: 4000
-  type: LoadBalancer # Use NodePort or Ingress if preferred
+    nodePort: 30004
+  type: NodePort
