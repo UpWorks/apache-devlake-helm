@@ -1,0 +1,12 @@
+# config-ui-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: devlake-config-ui
+spec:
+  selector:
+    app: devlake-config-ui
+  ports:
+  - port: 4000
+    targetPort: 4000
+  type: LoadBalancer # Use NodePort or Ingress if preferred

@@ -1,0 +1,43 @@
+# lake-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devlake-lake
+  labels:
+    app: devlake-lake
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devlake-lake
+  template:
+    metadata:
+      labels:
+        app: devlake-lake
+    spec:
+      containers:
+      - name: lake
+        image: apache/devlake:v1.0.2-beta5
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DB_URL
+          valueFrom:
+            configMapKeyRef:
+              name: devlake-config
+              key: DB_URL
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: devlake-config
+              key: PORT
+        - name: MODE
+          valueFrom:
+            configMapKeyRef:
+              name: devlake-config
+              key: MODE
+        - name: ENCRYPTION_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: devlake-secrets
+              key: encryption-secret

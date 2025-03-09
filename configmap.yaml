@@ -1,0 +1,12 @@
+# configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: devlake-config
+data:
+  # Change this to AWSHLX-DEVHUD-DEV Potsgres instance
+  DB_URL: "postgresql://devlake@devlake-postgres:5432/lake?sslmode=disable"
+  PORT: "8080"
+  MODE: "release"
+  GRAFANA_PORT: "3000"
+  CONFIG_UI_PORT: "4000"
