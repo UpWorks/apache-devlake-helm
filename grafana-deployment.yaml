@@ -20,6 +20,13 @@ spec:
         image: grafana/grafana:10.2.0
         ports:
         - containerPort: 3000
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "1Gi"
+            cpu: "1"
         env:
         - name: GF_SERVER_HTTP_PORT
           valueFrom:

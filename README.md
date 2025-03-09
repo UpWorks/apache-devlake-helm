@@ -29,6 +29,8 @@ Alternatively, get the Minikube IP (minikube ip) and the assigned NodePort (e.g.
 
 + Get the assigned NodePort (kubectl get svc) and visit http://localhost:<node-port> directly, as Docker Desktop binds the node ports to your host.
 
+**Storage**: Ensure your local cluster supports dynamic provisioning or has a default StorageClass. For Minikube, you may need to enable the storage addon (minikube addons enable storage-provisioner). For Kind, you might need to pre-create a PersistentVolume or adjust the PVC.
+
 ```bash
 kubectl apply -f postgres-deployment.yaml
 kubectl apply -f postgres-service.yaml
